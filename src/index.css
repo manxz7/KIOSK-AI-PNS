@@ -1,0 +1,289 @@
+@import "tailwindcss";
+
+/*
+ * Design B — "Malaysia Future AI Service Kiosk" visual system.
+ * Dark royal-blue Jalur Gemilang identity: deep blue backdrop, gold accents,
+ * red CTAs, glassy cards. Ported from the kiosk-ai-malaysia-source reference.
+ */
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Sora", ui-sans-serif, system-ui, sans-serif;
+
+  --color-royal: oklch(0.42 0.17 264);
+  --color-royal-deep: oklch(0.22 0.11 265);
+  --color-royal-glow: oklch(0.62 0.19 258);
+  --color-gemilang-red: oklch(0.56 0.22 27);
+  --color-gemilang-yellow: oklch(0.85 0.16 92);
+  --color-ink: oklch(0.2 0.05 265);
+
+  --color-kiosk-card: oklch(1 0 0);
+  --color-kiosk-muted: oklch(0.955 0.012 258);
+  --color-kiosk-muted-fg: oklch(0.52 0.04 262);
+  --color-kiosk-border: oklch(0.9 0.02 258);
+  --color-kiosk-fg: oklch(0.99 0 0);
+
+  /* legacy token names kept so any un-migrated utility classes still resolve */
+  --color-royal-50: oklch(0.95 0.02 258);
+  --color-royal-600: var(--color-royal);
+  --color-royal-700: var(--color-royal-deep);
+  --color-gold-400: var(--color-gemilang-yellow);
+  --color-gold-500: oklch(0.78 0.16 78);
+  --color-crimson-500: var(--color-gemilang-red);
+  --color-mist-50: var(--color-kiosk-muted);
+  --color-mist-200: var(--color-kiosk-border);
+  --color-mist-500: var(--color-kiosk-muted-fg);
+  --color-mist-900: var(--color-ink);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  color: var(--color-ink);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.material-symbols-rounded {
+  font-family: "Material Symbols Rounded";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.msr-fill {
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+/* Respect notch / home-indicator safe areas when installed as a standalone PWA */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.safe-area-x {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+@utility royal-surface {
+  background: linear-gradient(
+    160deg,
+    oklch(0.28 0.13 266),
+    oklch(0.18 0.09 265) 55%,
+    oklch(0.13 0.06 264)
+  );
+  color: var(--color-kiosk-fg);
+}
+
+@utility glass-panel {
+  background: oklch(1 0 0 / 10%);
+  border: 1px solid oklch(0.85 0.16 92 / 35%);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+
+@utility gold-text {
+  background: linear-gradient(120deg, oklch(0.9 0.14 96), oklch(0.78 0.16 78));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility jalur-stripe {
+  background: repeating-linear-gradient(
+    180deg,
+    oklch(0.56 0.22 27 / 90%) 0 6px,
+    white 6px 12px
+  );
+}
+
+@utility kiosk-card {
+  background: oklch(1 0 0 / 92%);
+  border: 1px solid oklch(0.42 0.17 264 / 12%);
+  box-shadow: 0 18px 50px -24px oklch(0.22 0.11 265 / 70%);
+  backdrop-filter: blur(10px);
+}
+
+@utility bg-gradient-royal {
+  background: linear-gradient(
+    160deg,
+    oklch(0.28 0.13 266),
+    oklch(0.18 0.09 265) 55%,
+    oklch(0.13 0.06 264)
+  );
+}
+
+@utility bg-gradient-red {
+  background: linear-gradient(135deg, oklch(0.62 0.23 30), oklch(0.5 0.2 25));
+}
+
+@utility bg-gradient-gold {
+  background: linear-gradient(120deg, oklch(0.9 0.14 96), oklch(0.78 0.16 78));
+}
+
+@utility shadow-glow-gold {
+  box-shadow:
+    0 0 0 1px oklch(0.85 0.16 92 / 55%),
+    0 12px 40px -12px oklch(0.85 0.16 92 / 55%);
+}
+
+@utility shadow-glow-red {
+  box-shadow: 0 10px 40px -8px oklch(0.56 0.22 27 / 65%);
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.015);
+  }
+}
+@utility animate-breathe {
+  animation: breathe 6s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 oklch(0.85 0.16 92 / 45%),
+      0 10px 40px -8px oklch(0.56 0.22 27 / 65%);
+  }
+  50% {
+    box-shadow:
+      0 0 0 14px oklch(0.85 0.16 92 / 0%),
+      0 10px 40px -8px oklch(0.56 0.22 27 / 65%);
+  }
+}
+@utility animate-glow-pulse {
+  animation: glow-pulse 2.4s ease-out infinite;
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-120vh) translateX(30px);
+    opacity: 0;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 14s linear infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-14px) translateX(6px);
+    opacity: 1;
+  }
+}
+.animate-float {
+  animation: float 3.8s ease-in-out infinite;
+}
+
+@keyframes wave-shift {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@utility animate-wave {
+  animation: wave-shift 22s linear infinite;
+}
+
+@keyframes ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@utility animate-ring-spin {
+  animation: ring-spin 18s linear infinite;
+}
+
+@keyframes spin-slow-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+.animate-spin-slow-reverse {
+  animation: spin-slow-reverse 20s linear infinite;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.45s ease-out both;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.42 0.17 264 / 40%);
+  border-radius: 999px;
+}
