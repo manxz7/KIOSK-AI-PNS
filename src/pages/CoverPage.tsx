@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import PageShell from "../components/layout/PageShell";
-import AIRobot from "../components/ui/AIRobot";
+import Robot3D from "../components/ui/Robot3D";
 import Button from "../components/ui/Button";
 import { useApp } from "../context/AppContext";
 
@@ -20,7 +20,9 @@ export default function CoverPage() {
           🇲🇾 Perbendaharaan Negeri Selangor
         </span>
 
-        <AIRobot size="lg" />
+        <div className="glass-panel h-64 w-64 overflow-hidden rounded-[2.5rem] sm:h-80 sm:w-80">
+          <Robot3D className="h-full w-full" />
+        </div>
 
         <h1 className="font-heading mt-4 max-w-xl text-3xl font-bold leading-tight text-kiosk-fg sm:text-5xl">
           Pembantu Digital <span className="gold-text">Kerajaan</span> Anda
