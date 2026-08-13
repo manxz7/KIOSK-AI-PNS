@@ -20,11 +20,11 @@ export default function CoverPage() {
           🇲🇾 Perbendaharaan Negeri Selangor
         </span>
 
-        <div className="glass-panel h-64 w-64 overflow-hidden rounded-[2.5rem] sm:h-80 sm:w-80">
+        <div className="glass-panel mx-auto aspect-square w-full max-w-[24rem] overflow-hidden rounded-[2.5rem] sm:max-w-[28rem]">
           <Robot3D className="h-full w-full" />
         </div>
 
-        <h1 className="font-heading mt-4 max-w-xl text-3xl font-bold leading-tight text-kiosk-fg sm:text-5xl">
+        <h1 className="font-heading mt-2 max-w-xl text-3xl font-bold leading-tight text-kiosk-fg sm:text-5xl">
           Pembantu Digital <span className="gold-text">Kerajaan</span> Anda
         </h1>
         <p className="mt-3 max-w-md text-base text-kiosk-fg/70">
