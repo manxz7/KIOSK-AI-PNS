@@ -175,7 +175,7 @@ export default function AIAssistantPage() {
       </div>
 
       {/* FAQ chips */}
-      <div className="relative z-20 flex gap-2.5 overflow-x-auto px-4 pb-3 md:px-8 [scrollbar-width:thin]">
+      <div className="relative z-20 flex gap-2.5 overflow-x-auto px-4 pb-3 md:px-8 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {faqList.map((q) => (
           <button
             key={q}
