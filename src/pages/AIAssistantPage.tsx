@@ -168,7 +168,7 @@ export default function AIAssistantPage() {
             )}
           </div>
 
-          <div className="min-h-[240px] flex-1">
+          <div className="h-[52vh] min-h-[360px] w-full shrink-0">
             <Robot3D className="h-full w-full" />
           </div>
         </div>

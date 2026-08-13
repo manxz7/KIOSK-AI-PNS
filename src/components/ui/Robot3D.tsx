@@ -18,7 +18,7 @@ function Robot() {
     const center = box.getCenter(new THREE.Vector3());
     const size = box.getSize(new THREE.Vector3());
     const maxDim = Math.max(size.x, size.y, size.z);
-    const scale = 3.5 / maxDim;
+    const scale = 4.3 / maxDim;
 
     c.scale.setScalar(scale);
     c.position.x = -center.x * scale;
@@ -157,7 +157,7 @@ function PlatformRings() {
 function CameraRig() {
   useFrame(({ camera }) => {
     camera.position.x = 0;
-    camera.lookAt(0, 1.2, 0);
+    camera.lookAt(0, 1.5, 0);
   });
   return null;
 }
@@ -226,7 +226,7 @@ export default function Robot3D({ className = "" }: Robot3DProps) {
   return (
     <div className={className}>
       <Canvas
-        camera={{ position: [0, 2.5, 7], fov: 42, near: 0.1, far: 200 }}
+        camera={{ position: [0, 2, 4.4], fov: 42, near: 0.1, far: 200 }}
         shadows
         gl={{
           antialias: true,
